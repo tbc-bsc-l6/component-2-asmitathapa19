@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\TemplateController;
+use App\Http\Controllers\ProductController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -24,8 +25,11 @@ Route::get('/crud', function () {
     return view('crud'); 
 });
 
-Route::view('index', 'insertRead');
 
+
+Route::post('insertData',[ProductController::class, 'insert']);
+
+Route::get('/crud',[ProductController::class, 'readdata']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
