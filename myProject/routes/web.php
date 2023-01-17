@@ -31,6 +31,12 @@ Route::post('insertData',[ProductController::class, 'insert']);
 
 Route::get('/crud',[ProductController::class, 'readdata']);
 
+
+
+Route::get('updatedelete',[ProductController::class, 'updateordelete']);
+
+Route::get('updatedata',[ProductController::class, 'update']);
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
