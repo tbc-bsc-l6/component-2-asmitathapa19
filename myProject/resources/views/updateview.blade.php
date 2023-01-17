@@ -1,6 +1,5 @@
 @extends('crud')
 @section('content')
-
 <div class ="col-md-4 m-auto border mt-3 p-2 boreder-info">
     <h2 class = "text-center">Update</h2>
 <form action= "updatedata" method="get">
@@ -17,5 +16,6 @@
 <button type="submit" class="btn btn-outline-primary fw-bold fs-5 rounded mt-5">Update</button>
 </form>
 </div>
+
 
 @endsection
