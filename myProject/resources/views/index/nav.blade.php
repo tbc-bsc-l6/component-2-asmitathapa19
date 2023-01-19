@@ -20,14 +20,34 @@
 						<li class="text-center border-right text-white">
 							<i class="fas fa-phone mr-2"></i> 001 234 5678
 						</li>
-						<li class="text-center border-right text-white">
-							<a href="{{ route('login')}}" data-toggle="modal" data-target="#exampleModal" class="text-white">
-								<i class="fas fa-sign-in-alt mr-2"></i> Log In </a>
-						</li>
-						<li class="text-center text-white">
-							<a href="{{ route('register')}}" data-toggle="modal" data-target="#exampleModal2" class="text-white">
-								<i class="fas fa-sign-out-alt mr-2"></i>Register </a>
-						</li>
+						@if(Auth()->check())
+							<li class="text-center border-right text-white">
+								<form method="POST" action="{{ route('logout') }}">
+								@csrf
+
+								<x-dropdown-link :href="route('logout')"
+										onclick="event.preventDefault();
+													this.closest('form').submit();">
+									<i class="fas fa-sign-out-alt mr-2 text-white">{{ __('Log Out') }}</i>
+								</x-dropdown-link>
+							</li>
+						@endif
+						@if(Auth()->check() && Auth()->user()->user_role == 1)
+							<li class="text-center border-right text-white">
+								<a href="{{ route('admin.dashboard')}}" data-toggle="modal" data-target="#exampleModal" class="text-white">
+									<i class="fas fa-sign-in-alt mr-2"></i> Dashboard </a>
+							</li>
+						@endif
+						@if(Auth()->check()!=1)
+							<li class="text-center border-right text-white">
+								<a href="{{ route('login')}}" data-toggle="modal" data-target="#exampleModal" class="text-white">
+									<i class="fas fa-sign-in-alt mr-2"></i> Log In </a>
+							</li>
+							<li class="text-center text-white">
+								<a href="{{ route('register')}}" data-toggle="modal" data-target="#exampleModal2" class="text-white">
+									<i class="fas fa-sign-out-alt mr-2"></i>Register </a>
+							</li>
+						@endif
 					</ul>
 					<!-- //header lists -->
 				</div>
