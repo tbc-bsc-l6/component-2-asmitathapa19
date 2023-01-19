@@ -9,51 +9,46 @@ class ProductController extends Controller
 {
     //
     function insert(Request $req){
-        $name= $req->get('pname');
-        $category= $req->get('pcategory');
-        $price= $req->get('pprice');
-        $image= $req->file('pimage') ->GetClientOriginalName();
-        
-        $req->pimage->move(public_path('pimages'),$image);
+        $name = $req->get('PName');
+        $category = $req->get('PCategory');
+        $price = $req->get('PPrice');
+        $image = $req->file('PImage') -> getClientOriginalName();
+        //move uploaded file
+        $req -> PImage ->move(public_path('pimages'), $image);
 
-       $prod =new product();
-       $prod ->PName = $name;
-       $prod ->PCategory = $category;
-       $prod ->PPrice = $price;
-       $prod ->PImage =$image;
-       $prod ->save();
-       return redirect('/crud');
-       
+        // return $req -> input();
+
+        // to save the inserted data into the database folder instatiate the model class product
+         $product = new product();
+         //since id is primary key ani autoincrement gareko cha teslai we dont need to mention
+         $product -> PName =  $name;
+         $product -> PCategory = $category;
+         $product -> PPrice =  $price;
+         $product -> PImage =  $image;
+         
+         //this function will save the data in database after inserting
+         $product -> save();
+        //after inserting again returning back to crud page
+        return redirect('crud');
     }
     function readdata(){
-        $pdata = product::all();
-        return view('insertRead', ['data'=> $pdata]);
+        // $productData = product::all();
+        return  view ('crud',['data' => product::paginate(2)]);
     }
-function updateordelete(Request $req){
-   $id = $req->get('id');
-   $name = $req->get('name');
-   $category = $req->get('category');
-   $price = $req->get('price');
-   if($req->get('update')=='Update'){
-    return view('updateview',['pid'=>$id, 'pname'=>$name, 'pcategory'=>$category, 'pprice'=>$price]);
-   }
- else{
-     $prod = product::find($id);
-     $prod->delete();
- }
- return redirect('/crud');
-}
-function update(Request $req){
-    $ID = $req->get('id');
-    $Name = $req->get('name');
-    $Category = $req->get('category');
-    $Price = $req->get('price');
-    $prod = product::find($ID);
-    $prod->PName = $Name;
-    $prod->PPrice = $Price;
-    $prod ->save();
-    return redirect('/crud');
-    
-}
- 
+
+    //update function
+    public function updateForm(Request $req,$id){
+        $products = product::findorfail($id);
+        return view('updateView', ['products' => $products]);
+    }
+    // public function updateProduct(Request $req, $id){
+    //     product::findorfail($id)->update($request->all());
+    //    return redirect('crud');
+    // }
+
+
+    // public function shop(){
+    //     $product=Product::all();
+    //     return view('shop', compact('Product'));
+    // }
 }

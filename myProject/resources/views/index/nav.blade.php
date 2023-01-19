@@ -34,7 +34,7 @@
 						@endif
 						@if(Auth()->check() && Auth()->user()->user_role == 1)
 							<li class="text-center border-right text-white">
-								<a href="{{ route('admin.dashboard')}}" data-toggle="modal" data-target="#exampleModal" class="text-white">
+								<a href="{{ route('dashboard')}}" data-toggle="modal" data-target="#exampleModal" class="text-white">
 									<i class="fas fa-sign-in-alt mr-2"></i> Dashboard </a>
 							</li>
 						@endif

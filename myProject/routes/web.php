@@ -32,9 +32,12 @@ Route::post('insertData',[ProductController::class, 'insert']);
 
 Route::get('/crud',[ProductController::class, 'readdata']);
 
+Route::get('/insertRead', function(){
+    return view('insertRead');
+});
 
-
-Route::get('updatedelete',[ProductController::class, 'updateordelete']);
+Route::get('updateForm/{id}',[ProductController::class, 'updateForm']);
+Route::put('updateProduct/{id}',[ProductController::class, 'updateProduct']);
 
 Route::get('updatedata',[ProductController::class, 'update']);
 
