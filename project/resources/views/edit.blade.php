@@ -5,11 +5,11 @@
         @method('put')
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label for="first_name"><b>First Name</b></label>
+                <label for="first_name"><b>Author First Name</b></label>
                 <input type="text" class="form-control" id="first_name" value="{{$products->first_name}}" name="first_name" required>
             </div>
             <div class="form-group col-md-6">
-                <label for="last_name"><b>Last Name</b></label>
+                <label for="last_name"><b>Author Last Name</b></label>
                 <input type="text" class="form-control" id="last_name" value="{{$products->last_name}}" name="last_name" required>
             </div>
         </div>

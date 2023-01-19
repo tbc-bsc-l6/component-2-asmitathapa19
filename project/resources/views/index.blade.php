@@ -8,30 +8,37 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 </head>
 <body>
-    <div class="row">
-        <div class="col-md-9">
-            <img class="h-100 w-100" src="/img/welcome.png">
-        </div>
-        <div class="col-md-3 pt-5 mt-5">
-            <div class="card">
-                <div class="card-header text-white text-center bg-primary">Welcome to our site</div>
-
-                <div class="card-body">
+    
+       
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Home</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="display">Products <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="login">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="register">Register</a>
+      </li>
+      
+    </ul>
+  </div>
+</nav>
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    <div class="text-center mt-5 mb-5">
-                        <a href="login" class="btn btn-primary btn-block">Login</a><br><br>
-                        <a href="register" class="btn btn-secondary btn-block">Signup</a><br><br>
-                        <a href="display" class="btn btn-info btn-block">Browse Products</a><br><br>
-                        <!-- <a href="display" class="btn btn-info btn-block">display</a> -->
-                    </div>
                 </div>
             </div>
         </div>
+            <img class="h-100 w-100" src="/img/welcome.png">
     </div>
 </body>
 </html>

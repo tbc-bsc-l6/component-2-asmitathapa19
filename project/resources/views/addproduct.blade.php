@@ -38,7 +38,7 @@
                         </select>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-success">Submit</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
             </form>
 
 @endsection

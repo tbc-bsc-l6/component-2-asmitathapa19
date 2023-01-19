@@ -2,16 +2,16 @@
     @extends('layout')
     @section('layout')
     @if(auth()->check() && auth()->user()->is_admin == 1)
-        <a href="{{url('addproduct')}}" class="btn btn-primary mt-2 p-2">Add Product</a>
+        <a href="{{url('addproduct')}}" class="btn btn-success mt-2 p-2">Add Product</a>
     @endif
-    <div class="align-items-center justify-content-center mt-5">
-                <table class="table table-dark">
+    <div class="align-items-center justify-content-center mt-4">
+                <table class="table table-stripped">
                     <thead>
                     <tr>
                         <th scope="col">S.N</th>
                         <th scope="col">Title</th>
-                        <th scope="col">First Name</th>
-                        <th scope="col">Last Name</th>
+                        <th scope="col">Author First Name</th>
+                        <th scope="col"> Author Last Name</th>
                         <th scope="col">Product Type</th>
                         <th scope="col">Price</th>
                         <th scope="col">Page No/Play Length</th>
@@ -47,4 +47,5 @@
                     </tbody>
                 </table>
             </div>
+            {{$products->links()}}
 </x-app-layout>

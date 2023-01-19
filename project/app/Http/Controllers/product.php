@@ -8,10 +8,10 @@ use App\Models\Category;
 class product extends Controller
 {
     public function display(){
-        $products = Category::all();
+       
         return view('display',
         [
-            'products' => $products
+            'products' => Category::paginate(5)
         ]);
     }
     public function addproduct(){
@@ -32,7 +32,7 @@ class product extends Controller
 
     public function updateProduct(Request $request, $id){
         Category::findorFail($id)->update($request->all());
-        return redirect('/');
+        return redirect('display');
     }
 
     public function add(Request $request){
@@ -42,6 +42,6 @@ class product extends Controller
 
     public function delete(Request $request, $id){
         Category::find($id)->delete();
-        return redirect('/');
+        return redirect('display');
     }
 }
